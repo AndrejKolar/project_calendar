@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Calendar
 gem 'fullcalendar-rails'
 
+# jQuery Turbolinks
+gem 'jquery-turbolinks'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
