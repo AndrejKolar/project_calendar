@@ -40,7 +40,7 @@ $(document).ready(function() {
             ignoreTimezone: false
         }],
 
-        timeFormat: 'h:mm t{ - h:mm t} ',
+        timeFormat: 'hh:mm { - hh:mm } ',
         dragOpacity: "0.5",
 
         //http://arshaw.com/fullcalendar/docs/event_ui/eventDrop/
