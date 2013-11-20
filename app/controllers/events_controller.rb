@@ -104,6 +104,6 @@ private
     # permit list between create and update. Also, you can specialize
     # this method with per-user checking of permissible attributes.
     def event_params
-      params.require(:event).permit(:title, :starts_at, :ends_at, :all_day, :description)
+      params.require(:event).permit(:title, :starts_at, :ends_at, :all_day, :description, :color)
     end
 end
