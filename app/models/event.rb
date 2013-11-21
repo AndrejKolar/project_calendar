@@ -13,6 +13,7 @@ class Event < ActiveRecord::Base
       :start => starts_at.rfc822,
       :end => ends_at.rfc822,
       :allDay => self.all_day,
+      :color => self.color,
       :recurring => false,
       :url => Rails.application.routes.url_helpers.event_path(id)
     }
