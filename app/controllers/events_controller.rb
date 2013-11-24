@@ -36,7 +36,6 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.starts_at = params[:start]
     @event.ends_at = params[:end]
-    @event.color = "red"
 
     respond_to do |format|
       format.html # new.html.erb
