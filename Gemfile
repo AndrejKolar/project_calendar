@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Login
+gem 'devise'
+
 # Calendar
 gem 'fullcalendar-rails'
 
