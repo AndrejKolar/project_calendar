@@ -10,7 +10,7 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%=  %></td>
+    <td><%= user.name %></td>
     <td><%= user.email %></td>
     <td><%= user.admin? ? 'yes' : 'no' %></td>
     <td><%= link_to 'view calendar', calendar_index_path %></td>
