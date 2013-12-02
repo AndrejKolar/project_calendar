@@ -3,7 +3,7 @@ ProjectCalendar::Application.routes.draw do
   devise_for :users
   resources :events
 
-  get "calendar/index"
+  get "calendar/index", as: 'calendar'
 
   root 'calendar#index'
 end

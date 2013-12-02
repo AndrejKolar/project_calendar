@@ -17,6 +17,17 @@
 
 <!--  Navigation bar -->
 <nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">Bit by bit</a>
+  </div>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-left">
+      <li><%=link_to "Calendar", calendar_path %></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+    </ul>
+  </div>
 </nav>
 
 <!--  Flash messages -->
