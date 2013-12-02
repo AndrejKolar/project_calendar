@@ -41,6 +41,12 @@
   </div>
 </nav>
 
+<!--  Content -->
+<div class="container">
+   <!-- <li><%= debug params %></li> -->
+  <%= yield %>
+</div>
+
 <!--  Flash messages -->
 <% if notice || alert %>
   <div class="container">
@@ -48,14 +54,6 @@
     <p class="alert"><%= alert %></p>
   </div>
 <% end %>
-
-
-<!--  Content -->
-<div class="container">
-   <!-- <li><%= debug params %></li> -->
-  <%= yield %>
-</div>
-
 
 </body>
 </html>
