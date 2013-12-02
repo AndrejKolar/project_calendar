@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-# Login
+# Added gems
 gem 'devise'
 
-# Calendar
 gem 'fullcalendar-rails'
 
-# jQuery Turbolinks
 gem 'jquery-turbolinks'
+
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :github => 'anjlab/bootstrap-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
