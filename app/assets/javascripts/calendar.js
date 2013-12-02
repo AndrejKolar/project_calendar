@@ -14,6 +14,8 @@ $(document).ready(function() {
         },
         selectable: true,
         selectHelper: true,
+        minTime: 8,
+        maxTime: 17,
 
         select: function(start, end, allDay) {
           window.location = "/events/new?start=" + start + "&" + "end=" + end;
