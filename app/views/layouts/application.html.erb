@@ -22,7 +22,7 @@
   </div>
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-left">
-      <li><%=link_to "Calendar", calendar_path %></li>
+      <li><%=link_to "Calendar", calendar_index_path if params[:controller] == 'calendar' || params[:controller] == 'events'  %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
@@ -32,8 +32,10 @@
 
 <!--  Flash messages -->
 <% if notice || alert %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
 <% end %>
 
 
