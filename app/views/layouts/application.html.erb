@@ -15,10 +15,22 @@
 </head>
 <body>
 
+<!--  Navigation bar -->
+<nav class="navbar navbar-default" role="navigation">
+</nav>
+
+<!--  Flash messages -->
+<% if notice || alert %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+<% end %>
 
+
+<!--  Content -->
+<div class="container">
   <%= yield %>
+</div>
+
 
 </body>
 </html>
