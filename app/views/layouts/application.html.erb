@@ -48,12 +48,20 @@
 </div>
 
 <!--  Flash messages -->
-<% if notice || alert %>
-  <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
+
+<% if params[:controller] != 'devise/sessions' && params[:controller] != 'devise/registrations'%>
+
+  <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+              <%= value %>
+        </div>
+  <% end %>
+
 <% end %>
+
+
+
+
 
 </body>
 </html>
