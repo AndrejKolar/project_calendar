@@ -39,7 +39,8 @@ $(document).ready(function() {
             url: '/events',
             color: 'yellow',
             textColor: 'black',
-            ignoreTimezone: false
+            ignoreTimezone: false,
+            data: {user: GetUrlValue("user")}
         }],
 
         timeFormat: 'hh:mm { - hh:mm } ',
@@ -73,4 +74,15 @@ function updateEvent(the_event) {
       },
       function (reponse) { alert('successfully updated task.'); }
     );
+};
+
+function GetUrlValue(VarSearch){
+    var SearchString = window.location.search.substring(1);
+    var VariableArray = SearchString.split('&');
+    for(var i = 0; i < VariableArray.length; i++){
+        var KeyValuePair = VariableArray[i].split('=');
+        if(KeyValuePair[0] == VarSearch){
+            return KeyValuePair[1];
+        }
+    }
 };

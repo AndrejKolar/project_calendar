@@ -5,6 +5,7 @@ ProjectCalendar::Application.routes.draw do
   resources :events
 
   get "calendar/index"
+  get "calendar/show"
 
   root 'welcome#index'
 end
