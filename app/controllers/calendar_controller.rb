@@ -5,5 +5,6 @@ class CalendarController < ApplicationController
   end
 
   def show
+    session[:selected_user_id] = params[:user]
   end
 end

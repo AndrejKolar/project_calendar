@@ -3,11 +3,7 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
 
-    if params[:user] != nil && current_user.admin?
-      @events = User.where(id: params[:user]).first.events
-    else
-       @events = current_user.events
-    end
+    events_for_user!
 
     # @events = @events.after(params['start']) if (params['start'])
     #@events = @events.before(params['end']) if (params['end'])
@@ -53,7 +49,7 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(event_params)
-    @event.user_id = current_user.id
+    @event.user_id = current_user_id
 
     respond_to do |format|
       if @event.save
@@ -103,5 +99,21 @@ class EventsController < ApplicationController
 private
     def event_params
       params.require(:event).permit(:title, :starts_at, :ends_at, :all_day, :description, :color)
+    end
+
+    def events_for_user!
+      if session[:selected_user_id]!= nil && current_user.admin?
+        @events = User.where(id: session[:selected_user_id]).first.events
+      else
+         @events = current_user.events
+      end
+    end
+
+    def current_user_id
+      if session[:selected_user_id] != nil && current_user.admin?
+        session[:selected_user_id]
+      else
+         current_user.id
+      end
     end
 end
