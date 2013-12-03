@@ -2,7 +2,13 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = current_user.events
+
+    if params[:user] != nil && current_user.admin?
+      @events = User.where(id: params[:user]).first.events
+    else
+       @events = current_user.events
+    end
+
     # @events = @events.after(params['start']) if (params['start'])
     #@events = @events.before(params['end']) if (params['end'])
 
