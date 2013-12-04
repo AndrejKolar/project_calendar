@@ -1,0 +1,15 @@
+<h1>Report</h1>
+
+<table class="table">
+  <tr>
+    <th>Start</th>
+    <th>End</th>
+  </tr>
+
+<% @user.events.each do |event| %>
+  <tr>
+    <td><%= event.starts_at %></td>
+    <td><%= event.ends_at %></td>
+  </tr>
+<% end %>
+</table>
