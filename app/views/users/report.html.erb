@@ -1,15 +1,19 @@
-<h1>Report</h1>
+<h2>Report for user <%= @user.name %></h2>
 
 <table class="table">
   <tr>
+    <th>Title</th>
     <th>Start</th>
     <th>End</th>
+    <th>Description</th>
   </tr>
 
 <% @user.events.each do |event| %>
   <tr>
+    <td><%= event.title %></td>
     <td><%= event.starts_at %></td>
     <td><%= event.ends_at %></td>
+    <td><%= event.description %></td>
   </tr>
 <% end %>
 </table>
