@@ -15,8 +15,10 @@
     <td><%= user.email %></td>
     <td><%= user.admin? ? 'yes' : 'no' %></td>
     <td><%= link_to 'Calendar', calendar_show_path(:user => user.id) %></td>
-    <td><%= link_to "Delete", {:controller => "users", :action => 'destroy', :id => user.id}, :confirm => "Are you sure you want to delete #{user.name}?", :method => :delete %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td>
+      <%= link_to_if not_this_user?(user), "Delete", {:controller => "users", :action => 'destroy', :id => user.id}, :confirm => "Are you sure you want to delete #{user.name}?", :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
