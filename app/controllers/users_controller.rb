@@ -10,9 +10,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
-    p "Called destroy for : " + params[:id].to_s
-
     @user = User.find(params[:id])
     @user.destroy
 
@@ -25,4 +22,24 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+
+def update
+  @user = User.find(params[:id])
+  if @user.update_attributes(user_params)
+    flash[:success] = "Profile updated."
+    redirect_to @user
+  else
+    render 'edit'
+  end
+end
+
+def show
+end
+
+
+  def user_params
+    params.require(:user).permit(:user, :name, :email, :id)
+  end
+
+
 end
