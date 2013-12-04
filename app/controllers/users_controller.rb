@@ -9,8 +9,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /user/1
-  # DELETE /user/1.xml
   def destroy
 
     p "Called destroy for : " + params[:id].to_s
@@ -22,5 +20,9 @@ class UsersController < ApplicationController
       format.html { redirect_to(:controller => 'dashboard', :action => 'index') }
       format.xml  { head :ok }
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 end
