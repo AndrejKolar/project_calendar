@@ -33,6 +33,6 @@ def update
 end
 
   def user_params
-    params.require(:user).permit(:user, :name, :email, :id)
+    params.require(:user).permit(:name, :email, :admin)
   end
 end
