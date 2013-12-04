@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
 
   def index
       if current_user && current_user.admin?
-        redirect_to :controller=>'dashboard', :action => 'index'
+        redirect_to :controller=>'users', :action => 'index'
       else
         redirect_to :controller=>'calendar', :action => 'index'
       end

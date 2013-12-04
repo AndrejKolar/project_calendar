@@ -1,9 +1,6 @@
 ProjectCalendar::Application.routes.draw do
   get "welcome/index"
 
-  get "dashboard/index"
-  delete "dashboard/destroy"
-
   devise_for :users
   scope "/admin" do
     resources :users
