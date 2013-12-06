@@ -2,14 +2,11 @@ source 'https://rubygems.org'
 
 # Added gems
 gem 'devise'
-
 gem 'fullcalendar-rails'
-
 gem 'jquery-turbolinks'
-
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :github => 'anjlab/bootstrap-rails'
-
 gem "handles_sortable_columns"
+gem 'will_paginate'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
