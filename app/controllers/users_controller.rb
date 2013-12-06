@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  handles_sortable_columns
+
   def index
-    @users = User.all
+    @users = User.order(sortable_column_order)
 
     respond_to do |format|
       format.html # index.html.erb

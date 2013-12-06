@@ -53,6 +53,7 @@ GEM
     erubis (2.7.0)
     execjs (2.0.2)
     fullcalendar-rails (1.6.4.0)
+    handles_sortable_columns (0.1.4)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -134,6 +135,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   fullcalendar-rails
+  handles_sortable_columns
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
