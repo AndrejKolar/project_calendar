@@ -2,13 +2,13 @@
 
 <table class="table">
   <tr>
-    <th>Title</th>
-    <th>Start</th>
-    <th>End</th>
+    <th><%= sortable_column "Title" %></th>
+    <th><%= sortable_column "starts_at" %></th>
+    <th><%= sortable_column "ends_at" %></th>
     <th>Description</th>
   </tr>
 
-<% @user.events.each do |event| %>
+<% @events.each do |event| %>
   <tr>
     <td><%= event.title %></td>
     <td><%= event.starts_at %></td>
