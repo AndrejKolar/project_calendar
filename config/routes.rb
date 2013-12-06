@@ -4,13 +4,15 @@ ProjectCalendar::Application.routes.draw do
   devise_for :users
   scope "/admin" do
     resources :users
-    get "users/:user_id/report", to: 'users#report', as: 'user_report'
   end
 
   resources :events
 
   get "calendar/index"
   get "calendar/show"
+
+  get "reports/index"
+  get "reports/:user_id", to: 'reports#get', as: 'reports_get'
 
   root 'welcome#index'
 end
