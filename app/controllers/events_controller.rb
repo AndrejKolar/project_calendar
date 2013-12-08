@@ -66,14 +66,16 @@ class EventsController < ApplicationController
     end
 
     respond_to do |format|
-      if true
-        format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
-        format.xml  { render :xml => @event, :status => :created, :location => @event }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-      end
+      format.html { redirect_to(calendar_index_path, :notice => 'Event was successfully created.') }
+      format.xml  { render :xml => @event, :status => :created, :location => @event }
     end
+
+  rescue
+    respond_to do |format|
+      format.html { render :action => "new" }
+      format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+    end
+
   end
 
   # PUT /events/1
