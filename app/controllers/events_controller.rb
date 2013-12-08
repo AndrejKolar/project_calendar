@@ -43,19 +43,30 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
+    @events = []
+
     @event = Event.new(event_params)
-
-    if @event.multiple_days?
-      p "YES"
-    else
-      p "NO"
-    end
-
-
     @event.user_id = current_user_id
 
+    if @event.multiple_days?
+      @event.days_span.each do |day|
+        @new_event = Event.new(event_params)
+        @new_event.starts_at = @new_event.starts_at.change(day: day.day, month: day.month, year: day.year)
+        @new_event.ends_at = @new_event.ends_at.change(day: day.day, month: day.month, year: day.year)
+        @new_event.user_id = current_user_id
+
+        @events << @new_event
+      end
+    else
+      @events << @event
+    end
+
+    Event.transaction do
+      @events.each(&:save!)
+    end
+
     respond_to do |format|
-      if @event.save
+      if true
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
