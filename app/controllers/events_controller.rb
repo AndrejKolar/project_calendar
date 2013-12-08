@@ -5,9 +5,6 @@ class EventsController < ApplicationController
 
     events_for_user!
 
-    # @events = @events.after(params['start']) if (params['start'])
-    #@events = @events.before(params['end']) if (params['end'])
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }

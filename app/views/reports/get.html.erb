@@ -1,0 +1,29 @@
+<h2>Report : <%= @user.name %></h2>
+
+<div class="col-md-4 col-md-offset-8">
+<%= form_tag reports_get_path, :method => 'get' do %>
+  <p>
+    <%= link_to '<- Previous', reports_get_path(:beginning_of_month => @beginning_previous) %>
+    <%= @beginning_current .strftime("%B, %Y") %>
+    <%= link_to 'Next ->', reports_get_path(:beginning_of_month => @beginning_next) %>
+  </p>
+<% end %>
+</div>
+
+<table class="table">
+  <tr>
+    <th><%= sortable_column "Title" %></th>
+    <th><%= sortable_column "starts_at" %></th>
+    <th><%= sortable_column "ends_at" %></th>
+    <th>Description</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= event.title %></td>
+    <td><%= event.starts_at %></td>
+    <td><%= event.ends_at %></td>
+    <td><%= event.description %></td>
+  </tr>
+<% end %>
+</table>

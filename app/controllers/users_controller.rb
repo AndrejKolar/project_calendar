@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  handles_sortable_columns
+
   def index
-    @users = User.all
+    @users = User.search(params[:search]).order(sortable_column_order).paginate(:per_page => 50, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,10 +32,6 @@ def update
   else
     render 'edit'
   end
-end
-
-def report
-  @user = User.find(params[:user_id])
 end
 
 private
