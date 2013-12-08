@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-
     events_for_user!
 
     respond_to do |format|
@@ -30,8 +29,6 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.set_hours(params[:start], params[:end])
 
-    p @event.span_days.to_s + "DAYS!!!"
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @event }
@@ -47,6 +44,14 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(event_params)
+
+    if @event.multiple_days?
+      p "YES"
+    else
+      p "NO"
+    end
+
+
     @event.user_id = current_user_id
 
     respond_to do |format|

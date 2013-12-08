@@ -38,8 +38,12 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def span_days
+  def days_span
     Date.parse(self.starts_at.to_s)..Date.parse(self.ends_at.to_s)
+  end
+
+  def multiple_days?
+    self.days_span.count > 1 ? true : false
   end
 
 end
