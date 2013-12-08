@@ -18,8 +18,9 @@ class ReportsController < ApplicationController
     @events = @events.order(sortable_column_order).paginate(:per_page => 50, :page => params[:page])
 
     respond_to do |format|
-      format.html # get.html.erb
-      format.json { render json: @events }
+      format.html
+      format.csv { send_data @events.to_csv }
+      format.xls
     end
   end
 end

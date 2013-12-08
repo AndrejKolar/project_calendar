@@ -22,5 +22,15 @@ class Event < ActiveRecord::Base
   def self.format_date(date_time)
     Time.at(date_time.to_i).to_formatted_s(:db)
   end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      columns = ['title', 'starts_at', 'ends_at', 'description']
+      csv << columns
+      all.each do |product|
+        csv << product.attributes.values_at(*columns)
+      end
+    end
+  end
 end
 

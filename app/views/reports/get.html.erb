@@ -27,3 +27,11 @@
   </tr>
 <% end %>
 </table>
+
+<div class="col-md-4 col-md-offset-8">
+  <p>
+    Download:
+    <%= link_to "CSV", reports_get_path(format: "csv") %> |
+    <%= link_to "Excel", reports_get_path(format: "xls") %>
+  </p>
+</div>
