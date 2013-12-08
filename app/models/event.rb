@@ -25,9 +25,10 @@ class Event < ActiveRecord::Base
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << column_names
+      columns = ['title', 'starts_at', 'ends_at', 'description']
+      csv << columns
       all.each do |product|
-        csv << product.attributes.values_at(*column_names)
+        csv << product.attributes.values_at(*columns)
       end
     end
   end
