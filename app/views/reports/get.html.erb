@@ -15,6 +15,7 @@
     <th><%= sortable_column "Title" %></th>
     <th><%= sortable_column "starts_at" %></th>
     <th><%= sortable_column "ends_at" %></th>
+    <th><%= sortable_column "total_hours" %></th>
     <th>Description</th>
   </tr>
 
@@ -23,6 +24,7 @@
     <td><%= event.title %></td>
     <td><%= event.starts_at %></td>
     <td><%= event.ends_at %></td>
+    <td><%= event.total_hours %></td>
     <td><%= event.description %></td>
   </tr>
 <% end %>
