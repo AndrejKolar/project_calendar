@@ -28,8 +28,7 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = Event.new
-    @event.starts_at = params[:start]
-    @event.ends_at = params[:end]
+    @event.set_hours(params[:start], params[:end])
 
     respond_to do |format|
       format.html # new.html.erb

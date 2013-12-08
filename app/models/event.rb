@@ -2,8 +2,13 @@ class Event < ActiveRecord::Base
 
   belongs_to :user, inverse_of: :events
 
-  scope :before, lambda {|end_time| {:conditions => ["ends_at < ?", Event.format_date(end_time)] }}
-  scope :after, lambda {|start_time| {:conditions => ["starts_at > ?", Event.format_date(start_time)] }}
+  def set_hours(start_time, end_time)
+    self.starts_at = start_time
+    self.ends_at = end_time
+
+    self.starts_at = self.starts_at.change(hour: 8)
+    self.ends_at = self.ends_at.change(hour: 16)
+  end
 
   def as_json(options = {})
     {
@@ -32,5 +37,6 @@ class Event < ActiveRecord::Base
       end
     end
   end
+
 end
 
