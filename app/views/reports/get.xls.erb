@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+    <ss:Worksheet ss:Name="Sheet1">
+        <ss:Table>
+            <ss:Row>
+                <ss:Cell>
+                    <ss:Data ss:Type="String">Title</ss:Data>
+                </ss:Cell>
+                <ss:Cell>
+                    <ss:Data ss:Type="String">Start</ss:Data>
+                </ss:Cell>
+                <ss:Cell>
+                    <ss:Data ss:Type="String">End</ss:Data>
+                </ss:Cell>
+                <ss:Cell>
+                    <ss:Data ss:Type="String">Description</ss:Data>
+                </ss:Cell>
+            </ss:Row>
+             <% @events.each do |event| %>
+            <ss:Row>
+                <ss:Cell>
+                    <ss:Data ss:Type="String"><%= event.title %></ss:Data>
+                </ss:Cell>
+                <ss:Cell>
+                    <ss:Data ss:Type="String"><%= event.starts_at %></ss:Data>
+                </ss:Cell>
+                <ss:Cell>
+                    <ss:Data ss:Type="String"><%= event.ends_at %></ss:Data>
+                </ss:Cell>
+                <ss:Cell>
+                    <ss:Data ss:Type="String"><%= event.description %></ss:Data>
+                </ss:Cell>
+            </ss:Row>
+            <% end %>
+        </ss:Table>
+    </ss:Worksheet>
+</ss:Workbook>
