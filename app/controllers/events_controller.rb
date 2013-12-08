@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-
     events_for_user!
 
     respond_to do |format|
@@ -28,8 +27,7 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = Event.new
-    @event.starts_at = params[:start]
-    @event.ends_at = params[:end]
+    @event.set_hours(params[:start], params[:end])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,18 +43,39 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
+    @events = []
+
     @event = Event.new(event_params)
     @event.user_id = current_user_id
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
-        format.xml  { render :xml => @event, :status => :created, :location => @event }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+    if @event.multiple_days?
+      @event.days_span.each do |day|
+        @new_event = Event.new(event_params)
+        @new_event.starts_at = @new_event.starts_at.change(day: day.day, month: day.month, year: day.year)
+        @new_event.ends_at = @new_event.ends_at.change(day: day.day, month: day.month, year: day.year)
+        @new_event.user_id = current_user_id
+
+        @events << @new_event
       end
+    else
+      @events << @event
     end
+
+    Event.transaction do
+      @events.each(&:save!)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to(calendar_index_path, :notice => 'Event was successfully created.') }
+      format.xml  { render :xml => @event, :status => :created, :location => @event }
+    end
+
+  rescue
+    respond_to do |format|
+      format.html { render :action => "new" }
+      format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+    end
+
   end
 
   # PUT /events/1
