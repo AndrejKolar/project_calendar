@@ -30,6 +30,8 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.set_hours(params[:start], params[:end])
 
+    p @event.span_days.to_s + "DAYS!!!"
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @event }

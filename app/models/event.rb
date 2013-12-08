@@ -38,5 +38,9 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def span_days
+    Date.parse(self.starts_at.to_s)..Date.parse(self.ends_at.to_s)
+  end
+
 end
 
