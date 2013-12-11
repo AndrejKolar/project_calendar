@@ -5,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Users</th>
+      <th>Total hours</th>
       <th>Actions</th>
       <th></th>
       <th></th>
@@ -21,6 +22,7 @@
             <%= link_to user.name, reports_get_path(user) %>;
           <% end %>
         </td>
+        <td><%= total_time_for_project(project) %>h</td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
