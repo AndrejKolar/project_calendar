@@ -4,11 +4,11 @@
   <thead>
     <tr>
       <th><%= sortable_column 'Name' %></th>
-      <th><%= sortable_column 'Users' %></th>
-      <th><%= sortable_column 'total_hours' %></th>
       <th><%= sortable_column 'started_at' %></th>
       <th><%= sortable_column 'Finished' %></th>
       <th><%= sortable_column 'Finished_at' %></th>
+      <th>Users</th>
+      <th>Total hours</th>
       <th>Actions</th>
       <th></th>
       <th></th>
@@ -19,6 +19,9 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.name %></td>
+        <td><%= project.started_at %></td>
+        <td><%= project.finished? ? 'yes' : 'no' %></td>
+        <td><%= project.finished? ? project.finished_at : '' %>
         <td>
           <% users = users_for_project(project)%>
           <% users.each do |user|%>
@@ -26,9 +29,6 @@
           <% end %>
         </td>
         <td><%= total_time_for_project(project) %>h</td>
-        <td><%= project.started_at %></td>
-        <td><%= project.finished? ? 'yes' : 'no' %></td>
-        <td><%= project.finished? ? project.finished_at : '' %>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
