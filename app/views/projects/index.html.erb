@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Users</th>
       <th>Total hours</th>
+      <th>Finished</th>
       <th>Actions</th>
       <th></th>
       <th></th>
@@ -23,6 +24,7 @@
           <% end %>
         </td>
         <td><%= total_time_for_project(project) %>h</td>
+        <td><%= project.finished? ? 'yes' : 'no' %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
