@@ -17,13 +17,13 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :finished %><br>
-    <%= f.check_box :finished, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
     <%= f.label :started_at %><br />
     <%= f.datetime_select :started_at %>
+  </div>
+
+    <div class="form-group">
+    <%= f.label :finished %><br>
+    <%= f.check_box :finished, class: "form-control" %>
   </div>
 
   <div class="actions">
