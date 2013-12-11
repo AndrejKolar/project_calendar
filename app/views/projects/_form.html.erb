@@ -21,9 +21,14 @@
     <%= f.datetime_select :started_at %>
   </div>
 
-    <div class="form-group">
+  <div class="form-group">
     <%= f.label :finished %><br>
-    <%= f.check_box :finished, class: "form-control" %>
+    <%= f.check_box :finished, class: "form-control", id: "box" %>
+  </div>
+
+  <div class="form-group" id="div">
+    <%= f.label :finished_at %><br />
+    <%= f.datetime_select :finished_at %>
   </div>
 
   <div class="actions">
