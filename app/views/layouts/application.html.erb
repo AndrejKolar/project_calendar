@@ -27,12 +27,10 @@
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <% if current_user && current_user.admin %>
-          <li class="<%= 'active' if params[:controller] == 'users' %>"><%=link_to "Users", users_path %></li>
-        <% elsif current_user && !current_user.admin %>
-          <li class="<%= 'active' if params[:controller] == 'calendar' %>"><%=link_to "Calendar", calendar_index_path %></li>
-      <% end %>
+      <li class="<%= 'active' if params[:controller] == 'calendar' %>"><%=link_to "Calendar", calendar_index_path %></li>
+      <li class="<%= 'active' if params[:controller] == 'users' %>"><%=link_to "Users", users_path %></li>
       <li class="<%= 'active' if params[:controller] == 'projects' %>"><%=link_to "Projects", projects_path %></li>
+      <li class="<%= 'active' if params[:controller] == 'reports' %>"><%=link_to "Report", reports_get_path(current_user) %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if params[:controller] != 'devise/sessions' && params[:controller] != 'devise/registrations'%>
