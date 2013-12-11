@@ -33,7 +33,7 @@
   </div>
     <div class="field">
     <%= f.label :project %><br />
-    <%= collection_select(:event, :project_id, Project.all, :id, :name) %>
+    <%= collection_select(:event, :project_id, Project.where(finished: false), :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
