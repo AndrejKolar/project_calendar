@@ -31,6 +31,10 @@
     <%= f.label :all_day %><br />
     <%= f.check_box :all_day %>
   </div>
+    <div class="field">
+    <%= f.label :project %><br />
+    <%= collection_select(:event, :project_id, Project.all, :id, :name) %>
+  </div>
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
