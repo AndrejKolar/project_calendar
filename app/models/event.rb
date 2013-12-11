@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
 
   belongs_to :user, inverse_of: :events
+  belongs_to :project, inverse_of: :events
 
   def set_hours(start_time, end_time)
     self.starts_at = start_time
