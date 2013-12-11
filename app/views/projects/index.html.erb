@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Users</th>
       <th>Actions</th>
       <th></th>
       <th></th>
@@ -14,6 +15,12 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.name %></td>
+        <td>
+          <% users = users_for_project(project)%>
+          <% users.each do |user|%>
+            <%= link_to user.name, reports_get_path(user) %>;
+          <% end %>
+        </td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
