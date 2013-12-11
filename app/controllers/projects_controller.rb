@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  handles_sortable_columns
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.order(sortable_column_order).paginate(:per_page => 50, :page => params[:page])
   end
 
   # GET /projects/1
