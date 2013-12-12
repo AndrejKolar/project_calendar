@@ -49,7 +49,8 @@ class Event < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where('title LIKE ? ', "%#{search}%")
+      project_id = Project.where(name: search)
+      where('title LIKE ? or project_id LIKE ?', "%#{search}%", project_id)
     else
       scoped
     end
