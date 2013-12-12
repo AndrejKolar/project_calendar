@@ -11,7 +11,7 @@ class ReportsController < ApplicationController
     @beginning_previous = (@beginning_current - 1.month).beginning_of_month.to_s
 
     # events
-    @events = @user.events.where(starts_at: @date_range)
+    @events = @user.events.where(starts_at: @date_range).search(params[:search])
     @events = @events.order(sortable_column_order).paginate(:per_page => 50, :page => params[:page])
 
     # time

@@ -47,5 +47,12 @@ class Event < ActiveRecord::Base
     self.days_span.count > 1 ? true : false
   end
 
+  def self.search(search)
+    if search
+      where('title LIKE ? ', "%#{search}%")
+    else
+      scoped
+    end
+  end
 end
 

@@ -23,6 +23,15 @@
 </div>
 </p>
 
+<div class="col-md-4 col-md-offset-8">
+<%= form_tag  reports_get_path, :method => 'get' , class: 'form-inline' do %>
+    <%= text_field_tag :search, params[:search], class: 'input-small', placeholder: 'name' %>
+    <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
+<% end %>
+</br>
+</div>
+
+
 <table class="table">
   <tr>
     <th><%= sortable_column "Title" %></th>
