@@ -1,9 +1,6 @@
 class ReportsController < ApplicationController
   handles_sortable_columns
 
-  def index
-  end
-
   def get
     @user = User.find(params[:user_id])
 
