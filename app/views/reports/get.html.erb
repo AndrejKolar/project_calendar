@@ -10,21 +10,38 @@
 <% end %>
 </div>
 
+<p>
+<div>
+    Total time: <%= @total_time %>h
+</div>
+
+<div>
+  <% @projects.each do |project| %>
+    <%= project.name %>: <%= time_for_project(project, @user, @date_range) %>h
+    <br />
+  <% end %>
+</div>
+</p>
+
 <table class="table">
   <tr>
     <th><%= sortable_column "Title" %></th>
-    <th><%= sortable_column "starts_at" %></th>
-    <th><%= sortable_column "ends_at" %></th>
+    <th><%= sortable_column "Date", column: "starts_at" %></th>
+    <th><%= sortable_column "Starting time", column: "starts_at" %></th>
+    <th><%= sortable_column "Ending time", column: "ends_at" %></th>
     <th><%= sortable_column "total_hours" %></th>
+    <th><%= sortable_column "Project", column: "project_id" %></th>
     <th>Description</th>
   </tr>
 
 <% @events.each do |event| %>
   <tr>
     <td><%= event.title %></td>
-    <td><%= event.starts_at %></td>
-    <td><%= event.ends_at %></td>
+    <td><%= event.starts_at.to_date %></td>
+    <td><%= event.starts_at.strftime("%I:%M%p") %></td>
+    <td><%= event.ends_at.strftime("%I:%M%p") %></td>
     <td><%= event.total_hours %></td>
+    <td><%= event.project.name %></td>
     <td><%= event.description %></td>
   </tr>
 <% end %>
