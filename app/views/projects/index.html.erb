@@ -19,9 +19,9 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.name %></td>
-        <td><%= project.started_at %></td>
+        <td><%= project.started_at.to_date %></td>
         <td><%= project.finished? ? 'yes' : 'no' %></td>
-        <td><%= project.finished? ? project.finished_at : '' %>
+        <td><%= project.finished? ? project.finished_at.to_date : 'active' %>
         <td>
           <% users = users_for_project(project)%>
           <% users.each do |user|%>
