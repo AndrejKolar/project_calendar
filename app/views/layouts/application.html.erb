@@ -42,11 +42,11 @@
 
 <!--  Content -->
 <div class="container">
-   <li><%= debug params %></li>
+  <!-- <li><%= debug params %></li>  -->
   <%= yield %>
 </div>
 
-<!--  Flash messages -->
+<!--  Flash messages
 
 <% if params[:controller] != 'devise/sessions' && params[:controller] != 'devise/registrations'%>
 
