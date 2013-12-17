@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  validates :title, :total_hours, presence: true
+  validates :total_hours, numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 24}
 
   belongs_to :user, inverse_of: :events
   belongs_to :project, inverse_of: :events
