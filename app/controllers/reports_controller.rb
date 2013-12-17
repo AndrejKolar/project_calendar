@@ -21,10 +21,12 @@ class ReportsController < ApplicationController
     project_ids = @events.pluck(:project_id)
     @projects = Project.where(id: project_ids)
 
+    filename = 'Report for ' + @user.name
+
     respond_to do |format|
       format.html
-      format.csv { send_data @events.to_csv }
-      format.xls
+      format.csv { send_data @events.to_csv, filename:  filename + '.csv'}
+      format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{filename}.xls\"" }
     end
   end
 end
