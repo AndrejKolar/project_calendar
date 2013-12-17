@@ -8,7 +8,7 @@
       <th><%= sortable_column 'Finished' %></th>
       <th><%= sortable_column 'Finished at:', column: "finished_at" %></th>
       <th>Users</th>
-      <th>Total hours</th>
+      <th>Current / Total</th>
       <th>Actions</th>
       <th></th>
       <th></th>
@@ -28,7 +28,7 @@
             <%= link_to user.name, reports_get_path(user) %>;
           <% end %>
         </td>
-        <td><%= total_time_for_project(project) %>h</td>
+        <td><%= current_month_time_for_project(project) %>h / <%= total_time_for_project(project) %>h</td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
