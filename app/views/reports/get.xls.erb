@@ -7,13 +7,19 @@
                     <ss:Data ss:Type="String">Title</ss:Data>
                 </ss:Cell>
                 <ss:Cell>
-                    <ss:Data ss:Type="String">Start</ss:Data>
+                    <ss:Data ss:Type="String">Date</ss:Data>
                 </ss:Cell>
                 <ss:Cell>
-                    <ss:Data ss:Type="String">End</ss:Data>
+                    <ss:Data ss:Type="String">Hours</ss:Data>
                 </ss:Cell>
                 <ss:Cell>
-                    <ss:Data ss:Type="String">Total Hours</ss:Data>
+                    <ss:Data ss:Type="String">Project</ss:Data>
+                </ss:Cell>
+                <ss:Cell>
+                    <ss:Data ss:Type="String">Starting time</ss:Data>
+                </ss:Cell>
+                <ss:Cell>
+                    <ss:Data ss:Type="String">Ending time</ss:Data>
                 </ss:Cell>
                 <ss:Cell>
                     <ss:Data ss:Type="String">Description</ss:Data>
@@ -25,13 +31,16 @@
                     <ss:Data ss:Type="String"><%= event.title %></ss:Data>
                 </ss:Cell>
                 <ss:Cell>
-                    <ss:Data ss:Type="String"><%= event.starts_at %></ss:Data>
-                </ss:Cell>
-                <ss:Cell>
-                    <ss:Data ss:Type="String"><%= event.ends_at %></ss:Data>
+                    <ss:Data ss:Type="Date"><%= event.starts_at.to_date %></ss:Data>
                 </ss:Cell>
                 <ss:Cell>
                     <ss:Data ss:Type="String"><%= event.total_hours %></ss:Data>
+                </ss:Cell>
+                <ss:Cell>
+                    <ss:Data ss:Type="Date"><%= event.starts_at.strftime("%H:%M") %></ss:Data>
+                </ss:Cell>
+                <ss:Cell>
+                    <ss:Data ss:Type="Date"><%= event.ends_at.strftime("%H:%M") %></ss:Data>
                 </ss:Cell>
                 <ss:Cell>
                     <ss:Data ss:Type="String"><%= event.description %></ss:Data>
