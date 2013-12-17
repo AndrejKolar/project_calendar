@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  validates :name, presence: true
 
   has_many :events, inverse_of: :user, :dependent => :delete_all
 
