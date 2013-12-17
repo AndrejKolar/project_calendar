@@ -28,7 +28,7 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li class="<%= 'active' if params[:controller] == 'calendar' %>"><%=link_to "Calendar", calendar_index_path %></li>
-      <% if current_user.admin?%>
+      <% if  current_user && current_user.admin? %>
         <li class="<%= 'active' if params[:controller] == 'users' %>"><%=link_to "Users", users_path %></li>
         <li class="<%= 'active' if params[:controller] == 'projects' %>"><%=link_to "Projects", projects_path %></li>
       <% end %>
@@ -36,6 +36,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if params[:controller] != 'devise/sessions' && params[:controller] != 'devise/registrations'%>
+        <li><%= link_to 'Account', edit_user_path(current_user) %></li>
         <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
       <% end %>
     </ul>
