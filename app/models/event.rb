@@ -31,10 +31,10 @@ class Event < ActiveRecord::Base
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      columns = ['title', 'starts_at', 'ends_at', 'total_hours', 'description']
+      columns = ['Title', 'Date', 'Hours', 'Project', 'Starting Time', 'Ending Time', 'Description']
       csv << columns
-      all.each do |product|
-        csv << product.attributes.values_at(*columns)
+      all.each do |event|
+        csv << [event.title, event.starts_at.to_date, event.total_hours, event.project.name, event.starts_at.strftime("%H:%M"), event.ends_at.strftime("%H:%M"), event.description]
       end
     end
   end
