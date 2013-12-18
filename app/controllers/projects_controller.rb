@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, :set_project, only: [:show, :edit, :update, :destroy]
   handles_sortable_columns
 
   # GET /projects
@@ -71,5 +71,12 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name, :finished, :started_at, :finished_at)
+    end
+
+    def require_admin
+      unless current_user.admin?
+            flash[:error] = "Unauthorised user"
+            redirect_to root_path
+          end
     end
 end

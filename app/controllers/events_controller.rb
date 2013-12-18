@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.user.id != current_user.id && !current_user.admin?
-      flash[:notice] = "Unauthorised access"
+      flash[:error] = "Unauthorised access"
       redirect_to root_path
     else
       respond_to do |format|
@@ -42,7 +42,12 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+    if @event.user.id != current_user.id && !current_user.admin?
+      flash[:error] = "Unauthorised access"
+      redirect_to root_path
+    else
+      @event = Event.find(params[:id])
+    end
   end
 
   # POST /events
@@ -109,7 +114,13 @@ class EventsController < ApplicationController
   # DELETE /events/1.xml
   def destroy
     @event = Event.find(params[:id])
-    @event.destroy
+
+    if @event.user.id != current_user.id && !current_user.admin?
+      flash[:error] = "Unauthorised access"
+      redirect_to root_path
+    else
+      @event.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(:controller => 'calendar', :action => 'index') }

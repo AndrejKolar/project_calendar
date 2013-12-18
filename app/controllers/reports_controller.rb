@@ -2,7 +2,11 @@ class ReportsController < ApplicationController
   handles_sortable_columns
 
   def get
-    @user = User.find(params[:user_id])
+    if current_user.admin?
+      @user = User.find(params[:user_id])
+    else
+      @user = current_user
+    end
 
     # date ranges
     @beginning_current = params[:beginning_of_month].try(:to_date) || Date.current.beginning_of_month

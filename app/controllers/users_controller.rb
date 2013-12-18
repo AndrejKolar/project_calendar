@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_admin
   handles_sortable_columns
 
   def index
@@ -37,5 +38,12 @@ end
 private
   def user_params
     params.require(:user).permit(:name, :email, :admin)
+  end
+
+  def require_admin
+    unless current_user.admin?
+          flash[:error] = "Unauthorised user"
+          redirect_to root_path
+        end
   end
 end
