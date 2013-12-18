@@ -32,7 +32,7 @@
         <li class="<%= 'active' if params[:controller] == 'users' %>"><%=link_to "Users", users_path %></li>
         <li class="<%= 'active' if params[:controller] == 'projects' %>"><%=link_to "Projects", projects_path %></li>
       <% end %>
-      <li class="<%= 'active' if params[:controller] == 'reports' %>"><%=link_to "Report", reports_get_path(current_user) %></li>
+      <li class="<%= 'active' if params[:controller] == 'reports' %>"><%=link_to "Report", reports_index_path %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if params[:controller] != 'devise/sessions' && params[:controller] != 'devise/registrations'%>
@@ -45,7 +45,7 @@
 
 <!--  Content -->
 <div class="container">
-  <!-- <li><%= debug params %></li>  -->
+   <li><%= debug params %></li>
   <%= yield %>
 </div>
 

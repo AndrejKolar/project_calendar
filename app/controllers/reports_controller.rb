@@ -1,5 +1,10 @@
 class ReportsController < ApplicationController
+  before_filter :authenticate_user!
   handles_sortable_columns
+
+  def index
+    redirect_to reports_get_path(current_user)
+  end
 
   def get
     if current_user && current_user.admin?

@@ -11,6 +11,7 @@ ProjectCalendar::Application.routes.draw do
   get "calendar/index"
   get "calendar/show"
 
+  get "reports/index"
   get "reports/:user_id", to: 'reports#get', as: 'reports_get'
 
   root 'calendar#index'
