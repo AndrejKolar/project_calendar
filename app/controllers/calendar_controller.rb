@@ -6,6 +6,10 @@ class CalendarController < ApplicationController
   end
 
   def show
-    session[:selected_user_id] = params[:user]
+    if current_user.admin?
+      session[:selected_user_id] = params[:user]
+    else
+      session[:selected_user_id] = current_user.id
+    end
   end
 end

@@ -16,10 +16,15 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @event }
-      format.js { render :json => @event.to_json }
+    if @event.user.id != current_user.id && !current_user.admin?
+      flash[:notice] = "Unauthorised access"
+      redirect_to root_path
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @event }
+        format.js { render :json => @event.to_json }
+      end
     end
   end
 
