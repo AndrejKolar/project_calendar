@@ -41,7 +41,7 @@ private
   end
 
   def require_admin
-    unless current_user.admin?
+    unless current_user && current_user.admin?
           flash[:error] = "Unauthorised user"
           redirect_to root_path
         end

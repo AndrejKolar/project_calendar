@@ -2,7 +2,7 @@ class ReportsController < ApplicationController
   handles_sortable_columns
 
   def get
-    if current_user.admin?
+    if current_user && current_user.admin?
       @user = User.find(params[:user_id])
     else
       @user = current_user
