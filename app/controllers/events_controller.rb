@@ -42,11 +42,11 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @event = Event.find(params[:id])
+
     if @event.user.id != current_user.id && !current_user.admin?
       flash[:error] = "Unauthorised access"
       redirect_to root_path
-    else
-      @event = Event.find(params[:id])
     end
   end
 
