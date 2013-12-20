@@ -2,35 +2,35 @@
 
   <%= render 'layouts/errors', object: @event %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %><br />
     <%= f.text_field :title, autofocus: true %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :starts_at %><br />
     <%= f.datetime_select :starts_at %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :ends_at %><br />
     <%= f.datetime_select :ends_at %>
   </div>
-    <div class="field">
+    <div class="form-group">
     <%= f.label :total_hours %><br />
     <%= f.text_field :total_hours %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :all_day %><br />
     <%= f.check_box :all_day %>
   </div>
-    <div class="field">
+    <div class="form-group">
     <%= f.label :project %><br />
     <%= collection_select(:event, :project_id, Project.where(finished: false), :id, :name) %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
-    <div class="field">
+    <div class="form-group">
     <%= f.label :color %><br />
     <%= f.select :color, options_for_select([["yellow", "yellow"], ["blue", "blue"], ["red", "red"], ["green", "green"]]) %>
   </div>
