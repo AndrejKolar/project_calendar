@@ -5,7 +5,7 @@ A sample is avaiable on: [heroku link](https://project-calendar.herokuapp.com)
 
 There are two types of users. **Normal users** can sign up, add events to the calendar, give them a description and add them to an existing project. **Admin users** can administer user rights, projects and create reports for specific users, projects and/or a specific time period.
 
-The app uses the [fullcalendar-rails](https://github.com/bokmann/fullcalendar-rails) gem for the jquerry calendar control. The rails version is '4.0.0' and it uses turbolinks.
+The app uses the [fullcalendar-rails](https://github.com/bokmann/fullcalendar-rails) gem for the jquerry calendar control. The rails version is `4.0.0` and it uses turbolinks.
 
 ##Installation
 
